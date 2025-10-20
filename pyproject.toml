@@ -1,0 +1,23 @@
+[project]
+name = "mindRouter-agent"
+version = "0.1.0"
+description = "A smart LangGraph agent that classifies messages as emotional or logical and routes across specialized personas."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "langchain-openai>=1.0.0",
+    "langchain>=1.0.0",
+    "langgraph>=1.0.0",
+    "openai>=2.5.0",
+    "python-dotenv>=1.1.1",
+    "streamlit>=1.50.0",
+]
+
+authors = [
+    { name = "Mohammed Al-Haj", email = "ai.mohammed.alhaj@gmail.com" }
+]
+
+license = { text = "MIT" }
+homepage = "https://github.com/alhaj-ai/mindRouter-agent"
+repository = "https://github.com/alhaj-ai/mindRouter-agent"
+keywords = ["chatbot", "agent", "LLM", "emotional", "logical", "AI", "langchain", "langgraph"]
