@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  verify:
+    name: LangGraph Conditional Router Verification
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+      - name: Verify Syntax & Conditional Routing Logic
+        run: |
+          python -m py_compile main.py streamlit_app.py
+          python -c "from main import graph, router, _extract_history; assert router({'message_type': 'emotional'}) == {'next': 'therapist'}; assert router({'message_type': 'logical'}) == {'next': 'logical'}; hist = _extract_history([{'role': 'user', 'content': 'hello'}]); assert len(hist) == 1; print('Verified MindRouter graph & routing logic!')"
